@@ -19,3 +19,8 @@ Route::resource('users', UserController::class); //users.index, users.create, us
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::resource('products', ProductController::class); //products.index, products.create, products.edit, products.update, products.destroy
 Route::get('/sellings', [SellingController::class, 'index'])->name('sellings');
+
+Route::controller(UserController::class)->group(function(){   
+    Route::get('users-export', 'export')->name('users.export');
+    Route::post('users-import', 'import')->name('users.import');
+});

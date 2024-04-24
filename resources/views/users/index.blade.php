@@ -10,14 +10,23 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <div class="card-header">{{ __('Table Users') }}</div>
-  
+                                      
                 <div class="card-body">
-                    <a href="{{ route('users.create') }}" class="btn btn-sm btn-dark">
-                        Add User
-                    </a>
+                <form action="{{ route('users.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" class="form-control">
+                    <br>
+                    <button class="btn btn-success">Import User Data</button>
+                    <a class="btn btn-warning float-end" href="{{ route('users.export') }}">Export User Data</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-dark float-end">Add User</a>    
+                </form>                                                  
                     <table class="table" id="users">
                         <thead>
+                        <tr>
+                            <th colspan="6">
+                                LIST OF USERS                                  
+                            </th>
+                        </tr>                        
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Full Name</th>
