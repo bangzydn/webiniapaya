@@ -7,7 +7,7 @@ use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -70,7 +70,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('Success','user has been deleted successfully');
+        return redirect()->route('users.index')->
+        with('Success','user has been deleted successfully');
     }
         public function export() 
         {
@@ -84,7 +85,8 @@ class UserController extends Controller
         {
             Excel::import(new UsersImport,request()->file('file'));
                 
-            return back();
+            return redirect()->route('users.index')->
+            withSuccess('user has been imported successfully');
         }
 
 }

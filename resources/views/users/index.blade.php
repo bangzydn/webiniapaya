@@ -23,7 +23,7 @@
                     <table class="table" id="users">
                         <thead>
                         <tr>
-                            <th colspan="6">
+                            <th colspan="6  ">
                                 LIST OF USERS                                  
                             </th>
                         </tr>                        
